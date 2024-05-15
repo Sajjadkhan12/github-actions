@@ -12,9 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      PACKER_RUN: ${{ github.event.workflow == 'Packer Workflow' }}
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || !env.PACKER_RUN
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || !contains(github.event.workflow_runs.*.name, 'Packer Workflow')
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
