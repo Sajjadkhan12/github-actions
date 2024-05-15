@@ -1,20 +1,15 @@
-name: Packer Workflow
-
+name: Running Packer-Workflow file
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
     paths:
       - 'example/packer/**'
+      
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo "Change detected in example/packer directory"
-      - name: Create execution flag
-        run: echo "executed" >> main_executed.txt
-        working-directory: ${{ github.workspace }}
+        run: echo after changing detected in  in example/packer directory
