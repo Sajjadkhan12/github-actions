@@ -14,15 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Job from packer-workflow
-        run: echo Change detected in example/packer directory
-      # Triggering the Main workflow after Packer workflow completion
-      - name: Trigger Main Workflow
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const mainWorkflow = await github.actions.createWorkflowDispatch({
-              workflow_file: 'main-workflow.yaml',
-              ref: 'main'
-            });
-            console.log(mainWorkflow);
-
+        run: echo "Change detected in example/packer directory"
