@@ -15,5 +15,12 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_run'
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo "Hello, world! from Main workflow."
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: sample-text-file
+          path: ./artifacts
+
+      # Print the contents of the sample.txt file
+      - name: Display artifact contents
+        run: cat ./artifacts/sample.txt
