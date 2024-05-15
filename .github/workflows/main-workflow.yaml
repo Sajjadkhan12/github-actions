@@ -1,17 +1,17 @@
-name: Workflow Two
-
+name: Main Workflow
 on:
+  push:
+    branches:
+      - main
   workflow_run:
-    workflows: [ packer-workflow.yml ]  # Trigger on completion of workflow1.yml
-    types: [ completed ]           # Only run on successful completion
-
+    workflows: ["Packer Workflow"]
+    types:
+      - completed
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_run'
     steps:
-      - uses: actions/checkout@v3
-
-      # Your deployment steps here
-      - name: Deploy the project
-        run: make deploy
-
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo "Hello, world! from Main workflow."
