@@ -1,1 +1,1 @@
-just testing two github workflows. hello hello
+just testing two github workflows.
