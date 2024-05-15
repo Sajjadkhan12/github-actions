@@ -1,12 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-name: Running File 1  push to master
-
+name: Running File 2  push to main
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'example/packer/**'
-      
   workflow_dispatch:
 jobs:
   build:
@@ -14,4 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo File 2 is executed after file 1
+        run: echo Hello, world! from File 2. 
+      
