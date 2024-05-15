@@ -16,11 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Check if Main workflow has executed
-        id: check_main
         run: |
           if [ -f main_executed.txt ]; then
-            echo "executed=true" >> $GITHUB_ENV
+            echo "Main workflow already executed"
+            exit 78
+          else
+            echo "Main workflow not executed yet"
           fi
-      - name: Run a one-line script
-        if: env.executed != 'true'
+      - name: Run main workflow
         run: echo "Hello, world! from Main workflow."
