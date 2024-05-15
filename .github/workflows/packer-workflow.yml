@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo after changing detected in  in example/packer directory
+      - name: Hello from Packer-workflow
+        run: echo "Changes detected in example/packer directory so the packer-workflow executes"
