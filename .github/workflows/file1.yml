@@ -1,0 +1,20 @@
+name: Build Packer Image (example/packer)
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'example/packer/**'  # Only trigger on changes within example/packer directory
+
+jobs:
+  build-packer-image:
+    runs-on: ubuntu-latest  # Replace with desired runner OS
+
+    steps:
+      - uses: actions/checkout@v3  # Checkout the repository code
+
+      # Add dummy Packer build steps here (replace with actual commands)
+      - name: Build Packer Image (Dummy)
+        run: |
+          echo "Building Packer Image..."
+          sleep 60s  # Simulate building process
