@@ -1,16 +1,21 @@
-name: Running Packer-Workflow file
+name: Workflow One
 
 on:
+  # Your push or pull request trigger event here
   push:
-    branches: [ "main" ]
-    paths:
-      - 'example/packer/**'
-      
-  workflow_dispatch:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Hello from Packer-workflow
-        run: echo "Changes detected in example/packer directory so the packer-workflow executes"
+      - uses: actions/checkout@v3
+
+      # Your build steps here
+      - name: Build the project
+        run: make build
+
+      - name: Output a success message (optional)
+        run: echo "Workflow packer completed successfully!"
+        # This is for informational purposes only
+
