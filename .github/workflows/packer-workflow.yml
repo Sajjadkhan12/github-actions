@@ -13,5 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Job from packer-workflow
+      - name: Run a one-line script
         run: echo "Change detected in example/packer directory"
+      - name: Mark Main workflow as executed
+        run: echo 'Executed' > main_executed.txt
+        working-directory: ${{ github.workspace }}
+        # Persist the artifact to be used by the Main workflow
+        # This indicates that the Main workflow has already executed
+        # to prevent it from executing again
+        continue-on-error: true
+        # This step can fail if the file already exists
