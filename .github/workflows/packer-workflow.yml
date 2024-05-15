@@ -1,4 +1,4 @@
-name: Running File 1  push example/packer directory
+name: Running Packer-Workflow file
 
 on:
   push:
@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo hello world file 1 after changing in example/packer directory
+        run: echo after changing detected in  in example/packer directory
