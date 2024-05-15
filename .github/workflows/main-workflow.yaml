@@ -12,8 +12,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || !contains(github.event.workflow_runs.*.name, 'Packer Workflow')
+    if: steps.check_main.outputs.executed != 'true'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Check if Main workflow has executed
+        id: check_main
+        run: |
+          if [ -f main_executed.txt ]; then
+            echo "executed=true" >> $GITHUB_ENV
+          fi
       - name: Run a one-line script
         run: echo "Hello, world! from Main workflow."
