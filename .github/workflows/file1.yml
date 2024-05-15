@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo File 2 is executed after file 1
+        run: echo hello world file 1 after changing in example/packer directory
