@@ -1,16 +1,28 @@
-name: Running Packer-Workflow file
+name: Packer Workflow
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
     paths:
       - 'example/packer/**'
-      
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo after changing detected in  in example/packer directory
+        run: echo "Change detected in example/packer directory"
+      # Triggering the Main workflow after Packer workflow completion
+      - name: Trigger Main Workflow
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const mainWorkflow = await github.actions.createWorkflowDispatch({
+              workflow_file: 'main-workflow.yaml',
+              ref: 'main'
+            });
+            console.log(mainWorkflow);
+
