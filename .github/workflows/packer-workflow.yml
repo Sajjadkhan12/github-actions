@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo "Change detected in example/packer directory"
+      - name: Job from packer-workflow
+        run: echo Change detected in example/packer directory
       # Triggering the Main workflow after Packer workflow completion
       - name: Trigger Main Workflow
         uses: actions/github-script@v4
