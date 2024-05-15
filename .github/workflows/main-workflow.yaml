@@ -12,8 +12,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'workflow_run'
+    env:
+      PACKER_RUN: ${{ github.event.workflow == 'Packer Workflow' }}
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || !env.PACKER_RUN
     steps:
       - uses: actions/checkout@v4
-      - name: Running Main-workflow
+      - name: Run a one-line script
         run: echo "Hello, world! from Main workflow."
