@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
+      - name: Executing main-workflow jobs
         run: echo Hello, world! from Main workflow. 
       
