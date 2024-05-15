@@ -6,10 +6,18 @@ on:
       - 'example/packer/**'
       
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo after changing detected in  in example/packer directory
+      - name: Create and store artifact
+        run: |
+          echo "This is a sample text file." > sample.txt
+          # Save the sample.txt as an artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sample-text-file
+          path: sample.txt
