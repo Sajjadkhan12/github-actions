@@ -12,7 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: steps.check_main.outputs.executed != 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,4 +22,5 @@ jobs:
             echo "executed=true" >> $GITHUB_ENV
           fi
       - name: Run a one-line script
+        if: env.executed != 'true'
         run: echo "Hello, world! from Main workflow."
