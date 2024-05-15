@@ -1,4 +1,4 @@
-name: Running File 2  push to main
+name: Running Main Workflow 
 on:
   push:
     branches: [ "main" ]
@@ -9,5 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo Hello, world! from File 2. 
+        run: echo Hello, world! from Main workflow. 
       
